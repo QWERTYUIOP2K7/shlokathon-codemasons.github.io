@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पुस्तक विवरण</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>📖 पुस्तक विवरण</h1>
+        <button onclick="goBack()">⬅ वापस जाएं</button>
+    </header>
+
+    <main id="book-details"></main>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookId = urlParams.get("id");
+
+            fetch("books.json")
+                .then(response => response.json())
+                .then(books => {
+                    const book = books.find(b => b.id == bookId);
+                    if (book) {
+                        document.getElementById("book-details").innerHTML = `
+                            <br><h2>${book.title}</h2></br>
+                            <img src="${book.image}" alt="${book.title}">
+                           <br><p><strong>लेखक:</strong> ${book.author}</p></br>
+                            <p>${book.description}</p>
+                            <a href="${book.readUrl}" target="_blank">📖 अभी पढ़ें</a>
+                        `;
+                    }
+                });
+        });
+    </script>
+</body>
+</html>

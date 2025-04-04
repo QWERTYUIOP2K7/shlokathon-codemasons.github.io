@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हिंदी साहित्य पुस्तकालय</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>📚 हिंदी साहित्य पुस्तकालय</h1>
+        <input type="text" id="search" placeholder="खोजें..." onkeyup="searchBooks()">
+        <div class="filters">
+            <button onclick="filterBooks('')">सभी</button>
+            <button onclick="filterBooks('कहानी')">कहानी</button>
+            <button onclick="filterBooks('उपन्यास')">उपन्यास</button>
+        </div>
+    </header>
+    
+    <!-- Loading Animation -->
+    <button id="show-loading">Load Books</button>
+
+    <div id="loading" class="hidden">
+        <div class="spinner"></div>
+        <p>लोड हो रहा है...</p>
+    </div>
+    
+    <main id="book-list"></main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
